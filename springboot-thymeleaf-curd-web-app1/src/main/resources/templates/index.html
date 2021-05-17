@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<a th:href="@{/showEmptnxform}">Add new</a>
+<div align="center">
+<h1>Emplyee List</h1>
+<table border="1">
+<tr>
+<th>
+Numbre
+</th>
+<th>
+Name
+</th>
+<th>
+Dept
+</th>
+<th>
+Desg
+</th>
+<th>
+Action
+</th>
+</tr>
+<tr th:each="emplopee:${Listemployees}">
+
+<td th:text="${emplopee.number}"></td>
+<td th:text="${emplopee.name}"></td>
+<td th:text="${emplopee.dept}"></td>
+<td th:text="${emplopee.desg}"></td>
+<td><a th:href="@{/showformforupdate/{id}(id=${emplopee.number})}">Update</a>/<a th:href="@{/delete/{id}(id=${emplopee.number})}">Delete</a></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

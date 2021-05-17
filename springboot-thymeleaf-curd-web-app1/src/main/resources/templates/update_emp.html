@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+   
+<title>Insert title here</title>
+</head>
+<script>
+
+function loadPresons(){
+	alert("AA");
+	var xmlhttp = new XMLHttpRequest();
+	  xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+       
+	
+
+ var p=this.responseText;
+alert(p);
+for(i=0;i<p.length;i++)
+	{
+	alert(p.getString(0));
+	}
+	  }
+	  };
+	  xmlhttp.open("GET", "http://localhost:9092/report", true);
+	  xmlhttp.send();	
+}
+	 
+	 
+window.onload =function()
+{
+	loadPresons();
+}
+ 
+</script>
+<body>
+<form action="#" th:action="@{/saveEmp}" th:object="${emp}" method="POST">
+<input type="hidden" th:field="*{number}">
+<table>
+<tr><td>Number</td><td><input type="text" th:field="*{number}"></td></tr>
+<tr><td>Name</td><td><input type="text" th:field="*{name}"></td></tr>
+<tr><td>Dept</td><td><input type="text" th:field="*{dept}"></td></tr>
+<tr><td>Desg</td><td><input type="text" th:field="*{desg}"></td></tr>
+<!-- <tr><td>Desg</td><td><input type="text" id="getdata" onclick="loadPresons()"/></td></tr> -->
+
+<tr><td></td><td><input type="submit" value="Save"/></td></tr>
+</table>
+</form>fsdfsd
+</body>
+</html>
